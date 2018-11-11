@@ -1,6 +1,5 @@
-require 'pry'
 class FitnessGoalsController < ApplicationController
-  
+
   # POST to '/fitness_goals/create
   def create
     if current_user.fitness_goals.empty?

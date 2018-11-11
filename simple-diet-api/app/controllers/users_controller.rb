@@ -1,5 +1,3 @@
-require 'pry'
-
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create] #for everything except registering.
 
@@ -13,7 +11,7 @@ class UsersController < ApplicationController
   def edit
     render json: {
       user_info: {
-        name: current_user.name
+        name: current_user.name,
         email: current_user.email
       }
     }

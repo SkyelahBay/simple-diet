@@ -1,5 +1,3 @@
-require 'pry'
-
 class CalculateCalories
   attr_reader :user, :goal, :recommended_calories
 
