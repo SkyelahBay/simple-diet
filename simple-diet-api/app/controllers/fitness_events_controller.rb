@@ -12,7 +12,7 @@ class FitnessEventsController < ApplicationController
           event_calories:       event.event_calories
         }
       end
-      render json: { fitness_events: fitness_events }
+      render json: fitness_events
   end
 
   def create
