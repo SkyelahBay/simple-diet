@@ -1,7 +1,7 @@
 class DashController < ApplicationController
 
   # this will display all of the user's current info
-  # when they visit /dash on react side amd react makes the fetch request to the api on heroku.
+  # when they visit /dash on react side and react makes the fetch request to the api on heroku.
   def index
     fitness_goal = current_user.fitness_goals.first
     fitness_events = current_user.fitness_events.limit(5)
