@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   post '/fitness_events',       to: 'fitness_events#create'                                  #done                                     
   get'/fitness_events',         to: 'fitness_events#index'                                   #done
   put '/fitness_events/:id',    to: 'fitness_events#update'                                  #done                                                
-  patch '/fitness_events/:id',  to: 'fitness_events#update'                                  #done              
+  patch '/fitness_events/:id',  to: 'fitness_events#update'                                  #done  
+  delete '/fitness_events/:id', to: 'fitness_events#destroy'                                 #done
+              
 end

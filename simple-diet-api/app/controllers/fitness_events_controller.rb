@@ -35,6 +35,7 @@ class FitnessEventsController < ApplicationController
     end
   end
 
+  # DELETE to '/fitness_events/:id'
   def destroy
     @fitness_event.destroy
     render json: { message: 'Successfully removed event' }
