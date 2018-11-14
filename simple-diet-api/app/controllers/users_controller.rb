@@ -23,10 +23,8 @@ class UsersController < ApplicationController
     new_data = user_params_for_update
  
     if current_user.authenticate(new_data[:current_password])
-     
-      # new_data[...params]
       if current_user.update(email: new_data[:email], name: new_data[:name], user_name: new_data[:user_name])
-        render json: { message: 'profile updated!' }
+        render json: { message: 'profile updated!' } # it reaches here because it doesn't return unauth'd.
       else
         render json: { 
           message: 'something went wrong, here is what rails tried to process, and each individual key',
