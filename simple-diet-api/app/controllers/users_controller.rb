@@ -21,12 +21,24 @@ class UsersController < ApplicationController
   # POST to '/edit_profile
   def update
     new_data = user_params_for_update
-
+ 
     if current_user.authenticate(new_data[:current_password])
-      if current_user.update(email: new_data[:email], password: new_data[:new_password], name: new_data[:name], user_name: new_data[:user_name])
+     
+      # new_data[...params]
+      if current_user.update(email: new_data[:email], name: new_data[:name], user_name: new_data[:user_name])
         render json: { message: 'profile updated!' }
       else
-        render json: { message: 'something went wrong'}
+        render json: { 
+          message: 'something went wrong, here is what rails tried to process, and each individual key',
+          received_data: new_data,
+          individual: {
+            user_name: new_data[:user_name],
+            name: new_data[:name],
+            email: new_data[:email],
+            current_password: new_data[:current_password]
+          }
+          
+        }
       end
     else
       render json: { message: 'unauthorized'}
@@ -58,3 +70,14 @@ class UsersController < ApplicationController
   end
 
 end
+
+
+=begin {
+  "user":{
+    "name":"Alicia",
+    "user_name":"SleepingPidgeon",
+    "new_password":"31232",
+    "current_password":"123123"
+  }
+}
+=end
