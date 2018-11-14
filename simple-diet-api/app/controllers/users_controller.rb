@@ -47,9 +47,16 @@ class UsersController < ApplicationController
   def destroy
     if current_user.authenticate(user_params_for_delete[:current_password])
       current_user.destroy 
-      render json: { message: 'succesfully deleted profile'}
+      render json: { 
+        message: 'succesfully deleted profile',
+        deleteStatus: '1'
+      }
+
     else
-      render json: { message: 'unauthorized'}
+      render json: { 
+        message: 'unauthorized',
+        deleteStatus: '0'
+      }
     end      
   end
 
