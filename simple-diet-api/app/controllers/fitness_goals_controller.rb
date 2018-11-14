@@ -67,3 +67,4 @@ class FitnessGoalsController < ApplicationController
   end
 
 end
+

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def edit
     render json: {
       user_info: {
+        user_name: current_user.user_name,
         name: current_user.name,
         email: current_user.email
       }
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
     new_data = user_params_for_update
 
     if current_user.authenticate(new_data[:current_password])
-      if current_user.update(email: new_data[:email], password: new_data[:new_password], name: new_data[:name])
+      if current_user.update(email: new_data[:email], password: new_data[:new_password], name: new_data[:name], user_name: new_data[:user_name])
         render json: { message: 'profile updated!' }
       else
         render json: { message: 'something went wrong'}
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def user_params_for_update
-    params.require(:user).permit(:current_password, :new_password, :name, :email)
+    params.require(:user).permit(:current_password, :new_password, :name, :user_name, :email)
   end
 
   def user_params_for_delete

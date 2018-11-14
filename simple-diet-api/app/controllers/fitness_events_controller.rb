@@ -37,7 +37,6 @@ class FitnessEventsController < ApplicationController
 
   # DELETE to '/fitness_events/:id'
   def destroy
-    binding.pry
     @fitness_event.destroy
     render json: { message: 'Successfully removed event' }
   end
