@@ -1,5 +1,5 @@
 class CalculateNewCalories
-  attr_reader :user, :goal, :fitness_event, :new_calories
+  attr_reader :user, :goal, :fitness_event, :new_calories, :metrics_table
 
   def initialize(current_user, fitness_goal, fitness_event, metrics_table)
     @user = current_user
@@ -21,9 +21,11 @@ class CalculateNewCalories
     burned_calories = fitness_event.event_duration * ( ((4 * 3.5) * (goal.current_weight * 2.205)) / 200)
     @new_calories = goal.current_calories - burned_calories
 
+    recordCals = burned_calories > metrics_table.record_calories_burned ? burned_calories : metrics_table.record_calories_burned
+    
     @metrics_table.update(
-      total_calories_burned: (metrics_table.total_calories_burned + burned_calories),
-      record_calories_burned: burned_calories if (burned_calories > metrics_table.record_calories_burned) 
+      total_calories_burned: metrics_table.total_calories_burned + burned_calories,
+      record_calories_burned: recordCals
     )
 
     update_goal_and_event
