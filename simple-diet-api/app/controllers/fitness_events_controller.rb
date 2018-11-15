@@ -17,7 +17,12 @@ class FitnessEventsController < ApplicationController
 
   def create
     event = FitnessEvent.new(fitness_event_params)
-    fitness_event = CalculateNewCalories.new(current_user, current_user.fitness_goals.first, event).call
+    fitness_event = CalculateNewCalories.new(
+      current_user, 
+      current_user.fitness_goals.first, 
+      event, 
+      current_user.metrics_tables.first
+    ).call
 
     if fitness_event.save
       render json: { message: 'Successfully added event' }
