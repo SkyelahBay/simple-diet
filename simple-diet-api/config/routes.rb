@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   delete '/fitness_events/:id', to: 'fitness_events#destroy'                                 #done
            
   # metrics-only routes
-  get '/metrics',               to: 'metrics#index'                                          #done
+  get '/metrics',               to: 'metrics_table#index'                                          #done
 
 end

@@ -9,9 +9,9 @@ class FitnessGoalsController < ApplicationController
       if fitness_goal.save
         #make the MetricsTable at the same time.
         MetricsTable.create!(
-          total_calories_burned:  0
-          total_calories_gained:  0
-          record_calories_burned: 0
+          total_calories_burned:  0,
+          total_calories_gained:  0,
+          record_calories_burned: 0,
           user: current_user
         )
         render json: { message: 'fitness goal & metrics added!' }
