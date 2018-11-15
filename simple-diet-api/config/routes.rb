@@ -26,5 +26,8 @@ Rails.application.routes.draw do
   put '/fitness_events/:id',    to: 'fitness_events#update'                                  #done                                                
   patch '/fitness_events/:id',  to: 'fitness_events#update'                                  #done  
   delete '/fitness_events/:id', to: 'fitness_events#destroy'                                 #done
-              
+           
+  # metrics-only routes
+  get '/metrics',               to: 'metrics#index'                                          #done
+
 end

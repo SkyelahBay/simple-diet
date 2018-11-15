@@ -7,18 +7,23 @@ class FitnessGoalsController < ApplicationController
       fitness_goal = CalculateCalories.new(current_user, goal).call
 
       if fitness_goal.save
-        render json: { message: 'fitness goal added!' }
+        #make the MetricsTable at the same time.
+        MetricsTable.create!(
+          total_calories_burned:  0
+          total_calories_gained:  0
+          record_calories_burned: 0
+          user: current_user
+        )
+        render json: { message: 'fitness goal & metrics added!' }
       else
         render json: { message: 'something went wrong'}
       end
     else
       render json: { message: 'You already have a fitness goal'}
     end
- 
   end
 
-  #when the user goes to edit their fitness goal on react, 
-  #react makes a get request to pre-fill the current data based on what is output here:
+
   # GET to /fitness_goals/edit
   def edit
     if !current_user.fitness_goals.empty?

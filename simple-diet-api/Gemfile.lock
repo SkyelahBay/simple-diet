@@ -57,6 +57,8 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.1.0)
+      activesupport (>= 4.2)
     hirb (0.7.3)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
@@ -145,6 +147,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   faker
+  groupdate
   hirb
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)

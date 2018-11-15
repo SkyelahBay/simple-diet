@@ -20,4 +20,5 @@ class User < ApplicationRecord
 
   has_many :fitness_goals
   has_many :fitness_events
+  has_many :metrics_tables
 end
